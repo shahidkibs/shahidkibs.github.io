@@ -13,7 +13,7 @@ Upload the contents, not an extra enclosing folder. Do not set a custom domain o
 
 ## Included
 - Responsive portfolio and four case studies
-- Three original CV PDFs
+- Current CV PDF (ShahidmuhammedKB_CV.pdf)
 - Email, WhatsApp and LinkedIn links
 - Project filtering, case-study dialogs and copy-email interaction
 - `.nojekyll` for plain static publishing

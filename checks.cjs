@@ -28,7 +28,7 @@ class Element {
     else if (!link.includes(':') && !link.startsWith('#')) assert(fs.existsSync(path.join(root, link)), `Asset exists: ${link}`);
   }
   const pdfs = fs.readdirSync(path.join(root, 'assets')).filter(x => x.endsWith('.pdf'));
-  assert.equal(pdfs.length, 3);
+  assert.equal(pdfs.length, 1);
   pdfs.forEach(file => assert.equal(fs.readFileSync(path.join(root, 'assets', file)).subarray(0, 5).toString(), '%PDF-'));
 
   const filters = ['all', 'technology', 'workplace', 'delivery'].map(filter => new Element({ filter }));
@@ -75,6 +75,6 @@ class Element {
   navigator.clipboard.writeText = async () => { throw Error('Clipboard unavailable'); };
   await elements['copy-email'].emit('click');
   assert(elements['copy-status'].textContent.includes('smuhammedkb@gmail.com'), 'Clipboard fallback remains useful');
-  console.log('PASS: links, fragments, 3 CVs, all project filters, 4 case dialogs, focus return, mobile menu, clipboard and fallback.');
+  console.log('PASS: links, fragments, current CV, all project filters, 4 case dialogs, focus return, mobile menu, clipboard and fallback.');
   console.log('Browser layout and rendering are not covered by this check.');
 })().catch(error => { console.error(error); process.exitCode = 1; });
