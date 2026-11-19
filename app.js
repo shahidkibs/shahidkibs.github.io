@@ -49,7 +49,7 @@ const caseStudies = {
 
 const filters = [...document.querySelectorAll('[data-filter]')];
 const projectCards = [...document.querySelectorAll('.project-card')];
-filters.forEach(button => button.addEventListener('click', () => {
+function applyProjectFilter(button) {
   const selected = button.dataset.filter;
   filters.forEach(item => {
     const active = item === button;
@@ -63,7 +63,9 @@ filters.forEach(button => button.addEventListener('click', () => {
     if (visible) count++;
   });
   document.getElementById('filter-status').textContent = `Showing ${count} ${count === 1 ? 'project' : 'projects'}${selected === 'all' ? ' across all work' : ` in ${button.textContent.trim()}`}.`;
-}));
+}
+filters.forEach(button => button.addEventListener('click', () => applyProjectFilter(button)));
+applyProjectFilter(filters.find(button => button.dataset.filter === 'technology'));
 
 const mosaic = document.querySelector('.seat-mosaic');
 for (let i = 0; i < 50; i++) mosaic.append(document.createElement('span'));
